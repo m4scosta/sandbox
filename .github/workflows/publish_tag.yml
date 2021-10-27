@@ -8,4 +8,5 @@ jobs:
       - uses: zwaldowski/semver-release-action@v2
         with:
           bump: minor
+          prefix: v
           github_token: ${{ secrets.GITHUB_TOKEN }}
