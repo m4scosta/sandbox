@@ -5,7 +5,7 @@ jobs:
   publish_tag:
     runs-on: ubuntu-latest
     steps:
-      - uses: zwaldowski/semver-release-action@v1
+      - uses: zwaldowski/semver-release-action@v2
         with:
           bump: minor
           github_token: ${{ secrets.GITHUB_TOKEN }}
