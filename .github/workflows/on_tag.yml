@@ -1,0 +1,10 @@
+on:
+  push:
+    tags:
+      - '**'
+
+jobs:
+  publish_tag:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "success"
