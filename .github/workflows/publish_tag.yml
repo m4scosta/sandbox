@@ -10,3 +10,5 @@ jobs:
           bump: minor
           prefix: v
           github_token: ${{ secrets.GITHUB_TOKEN }}
+        id: create_tag
+      - run: echo "${{ steps.create_tag.outputs.version }}"
