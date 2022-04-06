@@ -25,4 +25,6 @@ jobs:
       
       - name: Check JIRA issue id
         if: ${{ steps.search-jira-issue-id.outputs.group1 == '' }}
-        run: exit 1
+        run: |
+          echo "No JIRA issue id found on branch name"
+          exit 1
