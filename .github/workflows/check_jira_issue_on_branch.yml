@@ -6,7 +6,7 @@ on:
       - '!main'
 
 env:
-  JIRA_BOARD_PREFIX: 'S2P|TEST'
+  ISSUE_PREFIX: 'S2P'
 
 jobs:
   check_jira_issue_on_branch:
@@ -24,10 +24,10 @@ jobs:
         id: search-jira-issue-id
         with:
           text: ${{ steps.branch-name.outputs.current_branch }}
-          regex: '^.*(${{ env.JIRA_BOARD_PREFIX }}-\d+).*$'
+          regex: '^.*(${{ env.ISSUE_PREFIX }}-\d+).*$'
       
       - name: Check JIRA issue id
         if: ${{ steps.search-jira-issue-id.outputs.group1 == '' }}
         run: |
-          echo "No JIRA issue id found on branch name with prefix '{{ env.JIRA_BOARD_PREFIX }}-'"
+          echo "No JIRA issue id found on branch name with prefix '{{ env.ISSUE_PREFIX }}-', check if the ISSUE_PREFIX includes your board prefix."
           exit 1
