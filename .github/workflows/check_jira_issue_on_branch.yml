@@ -29,5 +29,5 @@ jobs:
       - name: Check JIRA issue id
         if: ${{ steps.search-jira-issue-id.outputs.group1 == '' }}
         run: |
-          echo "No JIRA issue id found on branch name with prefix '{{ env.ISSUE_PREFIX }}-', check if the ISSUE_PREFIX includes your board prefix."
+          echo "No JIRA issue id found on branch name with prefix '${{ env.ISSUE_PREFIX }}-', check if the ISSUE_PREFIX includes your board prefix."
           exit 1
