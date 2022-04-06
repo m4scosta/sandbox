@@ -2,7 +2,7 @@ on:
   push:
     branches:
       - '*'
-      - '!main'
+      - '!master'
 
 env:
   JIRA_BOARD_PREFIX: 'S2P'
