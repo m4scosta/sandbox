@@ -20,6 +20,7 @@ jobs:
         id: find-jira-issue
         with:
           text: ${{ steps.branch-name.outputs.current_branch }}
-          regex: '^.*(?${{ env.JIRA_BOARD_PREFIX }}-\d+).*$'
+          regex: '^.*(${{ env.JIRA_BOARD_PREFIX }}-\d+).*$'
       
       - run: echo "${{ steps.find-jira-issue.outputs.match }}"
+      - run: echo "${{ steps.find-jira-issue.outputs.group1 }}"
