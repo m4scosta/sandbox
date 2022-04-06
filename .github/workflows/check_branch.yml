@@ -16,11 +16,13 @@ jobs:
       - uses: tj-actions/branch-names@v5.2
         id: branch-name
 
-      - uses: actions-ecosystem/action-regex-match@v2
-        id: find-jira-issue
+      - name: Search JIRA issue id
+        uses: actions-ecosystem/action-regex-match@v2
+        id: search-jira-issue-id
         with:
           text: ${{ steps.branch-name.outputs.current_branch }}
           regex: '^.*(${{ env.JIRA_BOARD_PREFIX }}-\d+).*$'
       
-      - run: echo "${{ steps.find-jira-issue.outputs.match }}"
-      - run: echo "${{ steps.find-jira-issue.outputs.group1 }}"
+      - name: Check JIRA issue id
+        if: ${{ steps.search-jira-issue-id.outputs.group1 == '' }}
+        run: exit 1
