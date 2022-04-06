@@ -6,7 +6,7 @@ on:
       - '!main'
 
 env:
-  JIRA_BOARD_PREFIX: 'S2P'
+  JIRA_BOARD_PREFIX: 'S2P|TEST'
 
 jobs:
   check_jira_issue_on_branch:
@@ -29,5 +29,5 @@ jobs:
       - name: Check JIRA issue id
         if: ${{ steps.search-jira-issue-id.outputs.group1 == '' }}
         run: |
-          echo "No JIRA issue id found on branch name"
+          echo "No JIRA issue id found on branch name with prefix '{{ env.JIRA_BOARD_PREFIX }}-'"
           exit 1
