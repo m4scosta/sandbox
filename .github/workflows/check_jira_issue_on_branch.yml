@@ -29,7 +29,6 @@ jobs:
         id: commit-messages
         run: |
           COMMIT_MESSAGES=$(git log --no-decorate --oneline --no-merges --abbrev-commit -n ${{ github.event.pull_request.commits }})
-          echo "$COMMIT_MESSAGES"
           echo "COMMIT_MESSAGES<<EOF" >> $GITHUB_ENV
           echo "$COMMIT_MESSAGES" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
@@ -71,9 +70,3 @@ jobs:
               body: ':warning: No JIRA issue id found in branch name, commits or PR title.',
             })
             process.exit(1)
-      
-      # - name: Check JIRA issue id
-      #   if: ${{ steps.branch-search.outputs.group1 == '' }}
-      #   run: |
-      #     echo "No JIRA issue id found on branch name matching pattern '${{ env.ISSUE_ID_PATTERN }}'."
-      #     exit 1
